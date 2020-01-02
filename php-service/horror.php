@@ -4,100 +4,86 @@ set_time_limit(600);
 $seconds_to_cache = 604800;
 $ts = gmdate("D, d M Y H:i:s", time() + $seconds_to_cache) . " GMT";
 $params = [];
-$string = file_get_contents("../ready.json");
-/*
-$handle = @fopen("../ready.json", "r");
-$string = "";
-if ($handle) {
-    while (($buffer = fgets($handle, 131072)) !== false) {
-        $string = $string . $buffer;
-    }
-    fclose($handle);
-}
-*/
-$json_a = json_decode($string, true);
-/*
-header("Expires: $ts");
-header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-header("Pragma: cache");
-header("Cache-Control: max-age=$seconds_to_cache");
-*/
-header('Content-Type: application/json');
-if (count($json_a) > 0) {
-    echo 'good';
-} else {
-    echo 'bad';
-}
+// $outs = ["../ready.json"];
+$outs = ["../ready.1.json", "../ready.2.json", "../ready.3.json", "../ready.4.json", "../ready.5.json"];
 $json_o = array();
 $json_y = array();
-
 $i = 0;
-$params[0] = 'genre';
-$params[1] = 'Horror, Thriller, Film-Noir, Mystery';
-foreach ($json_a as $rkey => $resource) {
-    if ($params[0] === 'rating') {
-        $imdbRating = $resource['imdb']['rating'];
-        if (round(floatval($imdbRating)) == round(floatval($params[1]))) {
+foreach ($outs as &$filename) {
+	$string = file_get_contents($filename);
+	$json_a = json_decode($string, true);
+    /*
+    header("Expires: $ts");
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+    header("Pragma: cache");
+    header("Cache-Control: max-age=$seconds_to_cache");
+    */
+    $params[0] = 'genre';
+    $params[1] = 'Horror, Thriller, Film-Noir, Mystery';
+    foreach ($json_a as $rkey => $resource) {
+        if ($params[0] === 'rating') {
+            $imdbRating = $resource['imdb']['rating'];
+            if (round(floatval($imdbRating)) == round(floatval($params[1]))) {
+                $json_o[$i] = $resource;
+                $i++;
+            }
+        }
+
+        if ($params[0] === 'year') {
+            $year = $resource['title'];
+            if (strrpos($year, $params[1]) !== false) {
+                $json_o[$i] = $resource;
+                $i++;
+            }
+        }
+
+        if ($params[0] === 'years') {
+            $year = $resource['title'];
+            $json_y[$i] = $year;
+            $i++;
+        }
+
+        if ($params[0] === 'genre') {
+            $genre = explode(", ", $params[1]);
+            $genreIMDB = explode(", ", $resource['imdb']['genre']);
+            if (count(array_intersect($genre, $genreIMDB)) > 0) {
+                $json_o[$i] = $resource;
+                $i++;
+            }
+        }
+
+        if ($params[0] === 'movie') {
+            $name = $resource['name'];
+            if ($name === $params[1]) {
+                $json_o[$i] = $resource;
+                $i++;
+            }
+        }
+
+        if ($params[0] === 'search') {
+            $name = $resource['name'];
+            if (strrpos($name, $params[1]) !== false) {
+                $json_o[$i] = $resource;
+                $i++;
+            }
+        }
+
+        if ($params[0] === 'fulltext') {
+            $synopsis = [];
+            $plot = [];
+            $synopsis = $resource['imdb']['arrayPlotSummary'][0]['text'];
+            if (strrpos($synopsis, $params[1]) !== false) {
+                $json_o[$i] = $resource;
+                $i++;
+            }
+        }
+
+        if ($params[0] === 'index') {
             $json_o[$i] = $resource;
             $i++;
         }
-    }
-
-    if ($params[0] === 'year') {
-        $year = $resource['title'];
-        if (strrpos($year, $params[1]) !== false) {
-            $json_o[$i] = $resource;
-            $i++;
-        }
-    }
-
-    if ($params[0] === 'years') {
-        $year = $resource['title'];
-        $json_y[$i] = $year;
-        $i++;
-    }
-
-    if ($params[0] === 'genre') {
-        $genre = explode(", ", $params[1]);
-        $genreIMDB = explode(", ", $resource['imdb']['genre']);
-        if (count(array_intersect($genre, $genreIMDB)) > 0) {
-            $json_o[$i] = $resource;
-            $i++;
-        }
-    }
-
-    if ($params[0] === 'movie') {
-        $name = $resource['name'];
-        if ($name === $params[1]) {
-            $json_o[$i] = $resource;
-            $i++;
-        }
-    }
-
-    if ($params[0] === 'search') {
-        $name = $resource['name'];
-        if (strrpos($name, $params[1]) !== false) {
-            $json_o[$i] = $resource;
-            $i++;
-        }
-    }
-
-    if ($params[0] === 'fulltext') {
-        $synopsis = [];
-        $plot = [];
-        $synopsis = $resource['imdb']['arrayPlotSummary'][0]['text'];
-        if (strrpos($synopsis, $params[1]) !== false) {
-            $json_o[$i] = $resource;
-            $i++;
-        }
-    }
-
-    if ($params[0] === 'index') {
-        $json_o[$i] = $resource;
-        $i++;
     }
 }
-
 if ($params[0] === 'year') {
     $order = -1;
     usort($json_o, function($b, $a) {

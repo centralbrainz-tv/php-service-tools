@@ -22,7 +22,7 @@ function trim_whitespace($str) {
     return preg_replace('/\s+/', ' ',$str);
 }
 
-for ($index = 217322; $index <= 300001; $index++) {
+for ($index = 236418; $index <= 300001; $index++) {
     if (!in_array($index, $broken)) {
         $zeroes = str_pad(strval($index), 6, '0', STR_PAD_LEFT);
         $url = "https://www.imdb.com/title/tt0" . $zeroes . "/";
@@ -71,7 +71,7 @@ for ($index = 217322; $index <= 300001; $index++) {
             $urlPlotSummary = $url . 'plotsummary/';
             $htmlPlotSummary = file_get_html($urlPlotSummary);
             $docPlotSummary = $htmlPlotSummary ? str_get_html($htmlPlotSummary) : null;
-            $plotSummaryName = $docPlotSummary ? $docPlotSummary->find('#summaries')[0]->innertext : "Summaries";
+            $plotSummaryName = $docPlotSummary && count($docPlotSummary->find('#summaries')) > 0 ? $docPlotSummary->find('#summaries')[0]->innertext : "Summaries";
 
             $plotSummaryUl = $docPlotSummary && count($docPlotSummary->find('#plot-summaries-content')) > 0 ? $docPlotSummary->find('#plot-summaries-content')[0]->find('li') : [];
 
@@ -92,8 +92,8 @@ for ($index = 217322; $index <= 300001; $index++) {
                 $arrayPlotSummary[$i] = array('id' => $i, 'name' => $name, 'text' => $text, 'author' => $author);
             }
 
-            $synopsisName = $docPlotSummary ? $docPlotSummary->find('#synopsis')[0]->innertext : "Summaries";
-            $synopsisUl = $docPlotSummary ? $docPlotSummary->find('#plot-synopsis-content')[0]->find('li') : [];
+            $synopsisName = $docPlotSummary && count($docPlotSummary->find('#synopsis')) > 0 ? $docPlotSummary->find('#synopsis')[0]->innertext : "Summaries";
+            $synopsisUl = $docPlotSummary && count($docPlotSummary->find('#plot-synopsis-content')) > 0 ? $docPlotSummary->find('#plot-synopsis-content')[0]->find('li') : [];
 
             $arraySynopsis = [];
             for ($i = 0; $i < count($synopsisUl); $i++) {
@@ -294,7 +294,7 @@ for ($index = 217322; $index <= 300001; $index++) {
             $htmlAwards = file_get_html($urlAwards);
             $docAwards = $htmlAwards ? str_get_html($htmlAwards) : null;
             
-            $awardsHeads = $docAwards ? $docAwards->find('.article.listo')[0]->find('h3') : "Awards and nominations";
+            $awardsHeads = $docAwards && count($docAwards->find('.article.listo')) > 0 ? $docAwards->find('.article.listo')[0]->find('h3') : "Awards and nominations";
             $awardsTables = $docAwards ? $docAwards->find('table.awards') : [];
 
             $arrayAwards = [];

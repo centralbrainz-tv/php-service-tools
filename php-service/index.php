@@ -183,7 +183,6 @@ if ($params[0] === 'years') {
         return $a < $b ? 1 : -1;
     });
 }
-
 $json_o = array(
     'count' => count($json_o),
     'result' => array_slice($json_o, $params[3] * $params[4] - $params[4], $params[4])

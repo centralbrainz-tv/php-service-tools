@@ -14,12 +14,229 @@ Default call for years list.
 Example of response:
 
 ```json
-{"count":7,"total":119,"result":["(2011)","(2012)","(2013)","(2014)","(2016)","(2017)","(2019)"]}
+{
+   "count":7,
+   "total":119,
+   "result":[
+      "(2011)",
+      "(2012)",
+      "(2013)",
+      "(2014)",
+      "(2016)",
+      "(2017)",
+      "(2019)"
+   ]
+}
 ```
 
 ` php-service/index/index/page/1/100/count/0: `
 
 Default call for index.
+
+Example of response:
+```json
+{
+   "count":9444,
+   "total":1,
+   "result":[
+      {
+         "titleYear":"Yin yeung lo 16: Wui do mo hap si doi",
+         "title":"(2002)",
+         "name":"Yin yeung lo 16: Wui do mo hap si doi (2002)",
+         "imdb":{
+            "url":"https:\/\/www.imdb.com\/title\/tt0346060\/",
+            "poster":"https:\/\/m.media-amazon.com\/images\/M\/MV5BM2U3MjMxYTQtNmRlYy00ODI5LTg1MjctY2ZlODU5YWIwNTVkXkEyXkFqcGdeQXVyMTIxMDUyOTI@._V1_UY268_CR6,0,182,268_AL_.jpg",
+            "rating":"4.1",
+            "count":"21",
+            "genre":" Comedy, Fantasy, Horror",
+            "arrayFullCredit":[
+               {
+                  "id":0,
+                  "name":"Directed by",
+                  "text":""
+               },
+               {
+                  "id":1,
+                  "name":"Writing Credits",
+                  "text":""
+               },
+               {
+                  "id":2,
+                  "name":" Cast",
+                  "text":""
+               },
+               {
+                  "id":3,
+                  "name":"Produced by",
+                  "text":""
+               },
+               {
+                  "id":4,
+                  "name":"Cinematography by",
+                  "text":""
+               },
+               {
+                  "id":5,
+                  "name":"Art Department",
+                  "text":""
+               },
+               {
+                  "id":6,
+                  "name":"Other crew",
+                  "text":""
+               }
+            ],
+            "arrayPlotSummary":[
+               {
+                  "id":0,
+                  "name":"Summaries",
+                  "text":"The 16th film in the Troublesome Night series brings back regulars Simon Loui, Lan Law, Kai Fai Tong and Ho Lung Cheung in a story that takes place in the Sung Dynasty. There, they encounter the characters of the famous Chinese Story &quot;The Water Margin,&quot; a story that takes place about a thousand years ago in ancient China involving a cruel government, con artists, a beautiful but crafty village girl and a sword-wielding martial artist trying to overcome all the adversaries.",
+                  "author":"OliverChu"
+               }
+            ],
+            "arraySynopsis":[
+               {
+                  "id":0,
+                  "name":"Synopsis",
+                  "text":"",
+                  "author":"OliverChu"
+               }
+            ],
+            "keywords":[
+
+            ],
+            "arrayTaglines":[
+               {
+                  "id":0,
+                  "name":"Taglines",
+                  "text":""
+               }
+            ],
+            "arrayParentalGuide":[
+               {
+                  "id":0,
+                  "name":"Certification",
+                  "text":[
+                     ""
+                  ]
+               },
+               {
+                  "id":1,
+                  "name":"Sex & Nudity",
+                  "text":[
+
+                  ]
+               },
+               {
+                  "id":2,
+                  "name":"Violence & Gore",
+                  "text":[
+
+                  ]
+               },
+               {
+                  "id":3,
+                  "name":"Profanity",
+                  "text":[
+
+                  ]
+               },
+               {
+                  "id":4,
+                  "name":"Alcohol, Drugs & Smoking",
+                  "text":[
+
+                  ]
+               },
+               {
+                  "id":5,
+                  "name":"Frightening & Intense Scenes",
+                  "text":[
+
+                  ]
+               }
+            ],
+            "arrayReleaseInfo":[
+               {
+                  "id":0,
+                  "name":"Release Dates",
+                  "text":"<table class=\"ipl-zebra-list ipl-zebra-list--fixed-first release-dates-table-test-only\"> <tr class=\"ipl-zebra-list__item release-date-item\"> <td class=\"release-date-item__country-name\"><a href=\"\/calendar\/?region=hk&ref_=ttrel_rel_1\" >Hong Kong <\/a><\/td> <td class=\"release-date-item__date\" align=\"right\">5 September 2002<\/td> <td class=\"release-date-item__attributes--empty\"><\/td> <\/tr> <\/table>"
+               },
+               {
+                  "id":1,
+                  "name":"Also Known As (AKA)",
+                  "text":""
+               }
+            ],
+            "locations":{
+               "id":0,
+               "name":"Filming Locations",
+               "text":""
+            },
+            "dates":{
+               "id":0,
+               "name":"Filming Dates",
+               "text":""
+            },
+            "technical":{
+               "id":0,
+               "name":"Technical Specifications",
+               "text":""
+            },
+            "arrayFAQ":[
+               {
+                  "id":0,
+                  "name":"Spoilers",
+                  "text":[
+
+                  ]
+               }
+            ],
+            "arrayAwards":[
+
+            ],
+            "soundtracks":{
+               "id":0,
+               "name":"Soundtrack Credits",
+               "text":""
+            },
+            "trivias":{
+               "id":0,
+               "name":"Trivia",
+               "text":""
+            },
+            "quotes":{
+               "id":0,
+               "name":"Quotes",
+               "text":""
+            },
+            "goofs":{
+               "id":0,
+               "name":"Goofs",
+               "text":""
+            },
+            "CC":{
+               "id":0,
+               "name":"Crazy Credits",
+               "text":""
+            },
+            "AV":{
+               "id":0,
+               "name":"Alternate Versions",
+               "text":""
+            },
+            "MC":{
+               "id":0,
+               "name":"Crazy Credits",
+               "text":[
+
+               ]
+            }
+         }
+      }
+   ]
+}
+```
 
 ` php-service/index/index/page/{page}/{count}/{sortBy}/{sortDesc}: `
 

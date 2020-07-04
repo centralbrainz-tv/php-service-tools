@@ -117,9 +117,7 @@ Example of response:
                {
                   "id":0,
                   "name":"Spoilers",
-                  "text":[
-
-                  ]
+                  "text":[]
                }
             ],
             "arrayAwards":[

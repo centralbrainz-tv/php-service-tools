@@ -45,7 +45,7 @@ Example of response:
          "name":"Yin yeung lo 16: Wui do mo hap si doi (2002)",
          "imdb":{
             "url":"https:\/\/www.imdb.com\/title\/tt0346060\/",
-            "poster":"https:\/\/m.media-amazon.com\/images\/M\/MV5BM2U3MjMxYTQtNmRlYy00ODI5LTg1MjctY2ZlODU5YWIwNTVkXkEyXkFqcGdeQXVyMTIxMDUyOTI@._V1_UY268_CR6,0,182,268_AL_.jpg",
+            "poster":"",
             "rating":"4.1",
             "count":"21",
             "genre":" Comedy, Fantasy, Horror",
@@ -53,36 +53,6 @@ Example of response:
                {
                   "id":0,
                   "name":"Directed by",
-                  "text":""
-               },
-               {
-                  "id":1,
-                  "name":"Writing Credits",
-                  "text":""
-               },
-               {
-                  "id":2,
-                  "name":" Cast",
-                  "text":""
-               },
-               {
-                  "id":3,
-                  "name":"Produced by",
-                  "text":""
-               },
-               {
-                  "id":4,
-                  "name":"Cinematography by",
-                  "text":""
-               },
-               {
-                  "id":5,
-                  "name":"Art Department",
-                  "text":""
-               },
-               {
-                  "id":6,
-                  "name":"Other crew",
                   "text":""
                }
             ],
@@ -119,52 +89,12 @@ Example of response:
                   "text":[
                      ""
                   ]
-               },
-               {
-                  "id":1,
-                  "name":"Sex & Nudity",
-                  "text":[
-
-                  ]
-               },
-               {
-                  "id":2,
-                  "name":"Violence & Gore",
-                  "text":[
-
-                  ]
-               },
-               {
-                  "id":3,
-                  "name":"Profanity",
-                  "text":[
-
-                  ]
-               },
-               {
-                  "id":4,
-                  "name":"Alcohol, Drugs & Smoking",
-                  "text":[
-
-                  ]
-               },
-               {
-                  "id":5,
-                  "name":"Frightening & Intense Scenes",
-                  "text":[
-
-                  ]
                }
             ],
             "arrayReleaseInfo":[
                {
                   "id":0,
                   "name":"Release Dates",
-                  "text":"<table class=\"ipl-zebra-list ipl-zebra-list--fixed-first release-dates-table-test-only\"> <tr class=\"ipl-zebra-list__item release-date-item\"> <td class=\"release-date-item__country-name\"><a href=\"\/calendar\/?region=hk&ref_=ttrel_rel_1\" >Hong Kong <\/a><\/td> <td class=\"release-date-item__date\" align=\"right\">5 September 2002<\/td> <td class=\"release-date-item__attributes--empty\"><\/td> <\/tr> <\/table>"
-               },
-               {
-                  "id":1,
-                  "name":"Also Known As (AKA)",
                   "text":""
                }
             ],

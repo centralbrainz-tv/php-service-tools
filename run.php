@@ -22,7 +22,7 @@ function trim_whitespace($str) {
     return preg_replace('/\s+/', ' ',$str);
 }
 
-for ($index = 85052; $index <= 100001; $index++) {
+for ($index = 848845; $index <= 900001; $index++) {
     if (!in_array($index, $broken)) {
         $zeroes = str_pad(strval($index), 6, '0', STR_PAD_LEFT);
         $url = "https://www.imdb.com/title/tt0" . $zeroes . "/";
@@ -51,8 +51,8 @@ for ($index = 85052; $index <= 100001; $index++) {
             
             $htmlFullCredit = file_get_html($urlFullCredit);
             $docFullCredit = $htmlFullCredit ? str_get_html($htmlFullCredit) : null;
-            $h4FullCredit = $docFullCredit ? $docFullCredit->find('#fullcredits_content')[0]->find('h4') : '';
-            $tableFullCredit = $docFullCredit ? $docFullCredit->find('#fullcredits_content')[0]->find('table') : [];
+            $h4FullCredit = $docFullCredit && count($docFullCredit->find('#fullcredits_content')) > 0 ? $docFullCredit->find('#fullcredits_content')[0]->find('h4') : [];
+            $tableFullCredit = $docFullCredit && count($docFullCredit->find('#fullcredits_content')) > 0 ? $docFullCredit->find('#fullcredits_content')[0]->find('table') : [];
             $arrayFullCredit = [];
             if (count($h4FullCredit) !== count($tableFullCredit)) {
                 echo 'error not matching counts h4 vs table';
@@ -166,7 +166,7 @@ for ($index = 85052; $index <= 100001; $index++) {
             $docParentalGuide = $htmlParentalGuide ? str_get_html($htmlParentalGuide) : null;
             
             $arrayParentalGuide = [];
-            $sections = $docParentalGuide ? $docParentalGuide->find('section.article.listo.content-advisories-index')[0]->find('section') : [];
+            $sections = ($docParentalGuide && count($docParentalGuide->find('section.article.listo.content-advisories-index')) > 0) ? $docParentalGuide->find('section.article.listo.content-advisories-index')[0]->find('section') : [];
 
             for ($i = 0; $i < count($sections); $i++) {
 
@@ -235,7 +235,15 @@ for ($index = 85052; $index <= 100001; $index++) {
                 $texts = [];
                 for ($i = 0; $i < count($sodaDivs); $i++) {
                     $soda = $sodaDivs[$i];
-                    $text = $soda->find('dt')[0]->find('a')[0]->innertext;
+                    if ($soda) {
+                        if ($soda && $text = count($soda->find('dt')) > 0) {
+                            $text = $soda->find('dt')[0]->find('a')[0]->innertext;
+                        } else {
+                            $text = '';
+                        }
+                    } else {
+                        $text = '';
+                    }
                     $texts[$i] = $text;
                 }
 

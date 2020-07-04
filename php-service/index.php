@@ -183,9 +183,26 @@ if ($params[0] === 'years') {
         return $a < $b ? 1 : -1;
     });
 }
+
+$taken = array();
+// $json_o = array_slice($json_o, ($params[3] - 1) * $params[4], ($params[4]) * 2);
+$json_u = array();
+if ($params[0] !== 'years') {
+	foreach($json_o as $key => $item) {
+		if(!in_array($item['name'], $taken)) {
+			$taken[] = $item['name'];
+			$json_u[] = $item;
+		}
+	}
+} else {
+	$json_u = $json_o;
+}
+$count = count($json_u);
+$json_u = array_slice($json_u, ($params[3] - 1) * $params[4], $params[4]);
 $json_o = array(
-    'count' => count($json_o),
-    'result' => array_slice($json_o, $params[3] * $params[4] - $params[4], $params[4])
+	'count' => $count,
+	'total' => count($json_u),
+    'result' => $json_u,
 );
 
 echo json_encode($json_o);

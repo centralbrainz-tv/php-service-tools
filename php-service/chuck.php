@@ -29,8 +29,8 @@ header("Cache-Control: max-age=$seconds_to_cache");
 */
 header('Content-Type: application/json');
 
-$json_o = array();
-$json_y = array();
+$json_o = [];
+$json_y = [];
 
 $i = 0;
 foreach ($json_a as $rkey => $resource) {
@@ -99,56 +99,60 @@ foreach ($json_a as $rkey => $resource) {
 
 if ($params[0] === 'year') {
     $order = -1;
-    usort($json_o, function($b, $a) {
+    usort($json_o, function ($b, $a) {
         return $a['name'] < $b['name'] ? 1 : -1;
     });
 }
 
 if ($params[0] === 'rating') {
     $order = -1;
-    usort($json_o, function($b, $a) {
+    usort($json_o, function ($b, $a) {
         return $b['imdb']['rating'] < $a['imdb']['rating'] ? 1 : -1;
     });
 }
 
 if ($params[0] === 'genre') {
     $order = -1;
-    usort($json_o, function($b, $a) {
+    usort($json_o, function ($b, $a) {
         return $a['name'] < $b['name'] ? 1 : -1;
     });
 }
 
 if ($params[0] === 'search') {
     $order = -1;
-    usort($json_o, function($b, $a) {
+    usort($json_o, function ($b, $a) {
         return $a['name'] < $b['name'] ? 1 : -1;
     });
 }
 
 if ($params[0] === 'fulltext') {
     $order = -1;
-    usort($json_o, function($b, $a) {
+    usort($json_o, function ($b, $a) {
         return $a['name'] < $b['name'] ? 1 : -1;
     });
 }
 
 if ($params[0] === 'index') {
     $order = -1;
-    usort($json_o, function($b, $a) {
+    usort($json_o, function ($b, $a) {
         return $b['imdb']['count'] < $a['imdb']['count'] ? 1 : -1;
     });
 }
 
 if ($params[0] === 'years') {
     $json_o = array_filter(array_unique($json_y));
-    usort($json_o, function($b, $a) {
+    usort($json_o, function ($b, $a) {
         return $a < $b ? 1 : -1;
     });
 }
-$json_o = array(
+$json_o = [
     'count' => count($json_o),
-    'result' => array_slice($json_o, $params[3] * $params[4] - $params[4], $params[4])
-);
+    'result' => array_slice(
+        $json_o,
+        $params[3] * $params[4] - $params[4],
+        $params[4]
+    ),
+];
 
 echo json_encode($json_o);
 ?>
